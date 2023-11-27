@@ -13,3 +13,9 @@ pip install pytorch
 python main.py
 #Run the python script with
 python summarize.py
+
+# Contributers
+Nawshin Ibnat Oishee
+Shivangi Sarkar
+Micah Harlan
+Kashan Raza
