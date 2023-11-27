@@ -9,9 +9,9 @@ pip install discord
 pip install transformers
 pip install pytorch
 
-#Run the Discord bot with
+# Run the Discord bot with
 python main.py
-#Run the python script with
+# Run the python script with
 python summarize.py
 
 # Contributers
