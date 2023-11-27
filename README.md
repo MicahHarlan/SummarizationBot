@@ -15,7 +15,7 @@ python main.py
 python summarize.py
 
 # Contributers
-Nawshin Ibnat Oishee
-Shivangi Sarkar
-Micah Harlan
+Nawshin Ibnat Oishee,
+Shivangi Sarkar,
+Micah Harlan,
 Kashan Raza
