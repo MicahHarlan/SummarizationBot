@@ -5,11 +5,10 @@ tokenizer=AutoTokenizer.from_pretrained('T5-base')
 model=AutoModelWithLMHead.from_pretrained('T5-base', return_dict=True)
 
 def break_into_lists(text, max_words_per_list=512):
-    words = text.split()
     result_lists = []
 
-    for i in range(0, len(words), max_words_per_list):
-        result_lists.append(' '.join(words[i:i + max_words_per_list]))
+    for i in range(0, len(text), max_words_per_list):
+        result_lists.append(''.join(text[i:i + max_words_per_list]))
 
     return result_lists
 
@@ -22,17 +21,20 @@ def summarize(sequence):
         return 'Input is below minimum length. '
     
     max_length = int(0.75*len(list(sequence)))
-    min_length = int(0.5*len(list(sequence)))
+    #min_length = int(0.5*len(list(sequence)))
     
     if len(list(sequence)) > 512:
-    
-        sequence_lists = break_into_lists(sequence)
+        sequence_list = break_into_lists(sequence)
         
         final_output = ""
         
-        for l in sequence_lists:
-            inputs=tokenizer.encode("summarize" +sequence,return_tensors='pt', max_length=512, truncation=True)
-            output = model.generate(inputs, min_length=min_length, max_length=max_length, repetition_penalty=2.0)
+        for l in sequence_list:
+            s = ''
+            for x in l:
+                s += x
+                
+            inputs=tokenizer.encode("summarize" + s,return_tensors='pt', max_length=512, truncation=True)
+            output = model.generate(inputs, min_length=10, max_length=100)
 
             #summary=tokenizer.decode(output[0], skip_special_tokens=True)
             """We'll Have to clean the output here."""
